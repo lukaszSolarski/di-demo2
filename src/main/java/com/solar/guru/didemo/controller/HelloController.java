@@ -13,6 +13,6 @@ public class HelloController {
     }
 
     public String hello() {
-        return "Hello, this is your first controller created using DI in Spring! Good Job! You didn't have to put 'new' operator!";
+        return greetingService.sayHello();
     }
 }
