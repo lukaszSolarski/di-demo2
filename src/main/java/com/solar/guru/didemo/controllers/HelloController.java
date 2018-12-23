@@ -1,6 +1,6 @@
-package com.solar.guru.didemo.controller;
+package com.solar.guru.didemo.controllers;
 
-import com.solar.guru.didemo.service.GreetingService;
+import com.solar.guru.didemo.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 @Controller

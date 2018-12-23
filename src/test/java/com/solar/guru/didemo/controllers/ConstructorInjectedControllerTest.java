@@ -1,6 +1,6 @@
-package com.solar.guru.didemo.controller;
+package com.solar.guru.didemo.controllers;
 
-import com.solar.guru.didemo.service.GreetingServiceImpl;
+import com.solar.guru.didemo.services.GreetingServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 

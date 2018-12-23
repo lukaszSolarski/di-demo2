@@ -1,4 +1,4 @@
-package com.solar.guru.didemo.service;
+package com.solar.guru.didemo.services;
 
 public interface GreetingService {
     String sayHello();

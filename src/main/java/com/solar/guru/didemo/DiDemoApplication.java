@@ -1,13 +1,12 @@
 package com.solar.guru.didemo;
 
-import com.solar.guru.didemo.controller.ConstructorInjectedController;
-import com.solar.guru.didemo.controller.HelloController;
-import com.solar.guru.didemo.controller.PropertyInjectedController;
-import com.solar.guru.didemo.controller.SetterInjectedController;
+import com.solar.guru.didemo.controllers.ConstructorInjectedController;
+import com.solar.guru.didemo.controllers.HelloController;
+import com.solar.guru.didemo.controllers.PropertyInjectedController;
+import com.solar.guru.didemo.controllers.SetterInjectedController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
 
 /*

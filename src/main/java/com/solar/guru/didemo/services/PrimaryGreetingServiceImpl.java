@@ -1,4 +1,4 @@
-package com.solar.guru.didemo.service;
+package com.solar.guru.didemo.services;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
