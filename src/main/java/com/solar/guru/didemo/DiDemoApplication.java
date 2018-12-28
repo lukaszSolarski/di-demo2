@@ -5,6 +5,7 @@ import com.solar.guru.didemo.controllers.HelloController;
 import com.solar.guru.didemo.controllers.PropertyInjectedController;
 import com.solar.guru.didemo.controllers.SetterInjectedController;
 import com.solar.guru.didemo.examplebeans.FakeDataSource;
+import com.solar.guru.didemo.examplebeans.FakeDataSourceFromEnv;
 import com.solar.guru.didemo.examplebeans.SecondFakeDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -37,5 +38,8 @@ public class DiDemoApplication {
         SecondFakeDataSource secondFakeDataSource = context.getBean(SecondFakeDataSource.class);
         System.out.println("Data source from second file: username: " + secondFakeDataSource.getUsername() +
                 ", pass: " + secondFakeDataSource.getPassword());
+        FakeDataSourceFromEnv fakeDataSourceFromEnv = context.getBean(FakeDataSourceFromEnv.class);
+        System.out.println("Data source from file and from env: username: " + fakeDataSourceFromEnv.getUsername() +
+                ", pass: " + fakeDataSourceFromEnv.getPassword());
     }
 }

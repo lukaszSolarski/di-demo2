@@ -1,13 +1,16 @@
 package com.solar.guru.didemo.config;
 
 import com.solar.guru.didemo.examplebeans.FakeDataSource;
+import com.solar.guru.didemo.examplebeans.FakeDataSourceFromEnv;
 import com.solar.guru.didemo.examplebeans.SecondFakeDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.env.Environment;
 
 /*
 There are 2 ways to specify more than one Source Property. One of them is commented, but both will work fine.
@@ -19,6 +22,9 @@ There are 2 ways to specify more than one Source Property. One of them is commen
         @PropertySource("classpath:secondfakedatasource.properties")
 })
 public class PropertyConfig {
+
+    @Autowired
+    private Environment env;
 
     @Value("${solar.username}")
     private String username;
@@ -32,6 +38,9 @@ public class PropertyConfig {
     @Value("${solar.second.password}")
     private String secondPassword;
 
+    /*
+    The 'username' variable will be overrode, when you create in Environment the environment variable called "SOLAR_USERNAME"
+     */
     @Bean
     public FakeDataSource getFakeDataSource() {
         FakeDataSource fakeDataSource = new FakeDataSource();
@@ -46,6 +55,17 @@ public class PropertyConfig {
         secondFakeDataSource.setUsername(secondUsername);
         secondFakeDataSource.setPassword(secondPassword);
         return secondFakeDataSource;
+    }
+    /*
+    When you create in Environment the environment variable called "MYSPECIFIC_USERNAME", the 'username' will become
+    from that variable
+    Password will be null;
+     */
+    @Bean
+    public FakeDataSourceFromEnv getFakeDataSourceFromEnv() {
+        FakeDataSourceFromEnv fakeDataSourceFromEnv = new FakeDataSourceFromEnv();
+        fakeDataSourceFromEnv.setUsername(env.getProperty("MYSPECIFIC_USERNAME"));
+        return  fakeDataSourceFromEnv;
     }
     /*
     This method seems to be unnecessary in this application, because it uses Spring Boot and Spring Boot is
