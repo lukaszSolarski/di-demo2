@@ -1,0 +1,30 @@
+#This file contains example of YAML language
+
+name: Luke
+
+names: #This is an array
+  - Luke
+  - Cristopher
+
+pound_sign: "#"
+
+#More complex object:
+book:
+  author: Luke Skywalker
+  title: Star Wars
+
+truth: yes #this is equal to: yes, Yes, true, True, TRUE etc.
+
+string_val: "That's the string value"
+
+colon_string: "The text with colon: text1, text2 etc"
+
+#String that includes new lines
+include_new_lines: |
+  lalala la
+  tra lala la
+
+#String that doesn't include new lines
+ignore_new_lines: >
+  bla bla bla
+  lala la
