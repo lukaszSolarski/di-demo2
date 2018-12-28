@@ -4,10 +4,7 @@ import com.solar.guru.didemo.controllers.ConstructorInjectedController;
 import com.solar.guru.didemo.controllers.HelloController;
 import com.solar.guru.didemo.controllers.PropertyInjectedController;
 import com.solar.guru.didemo.controllers.SetterInjectedController;
-import com.solar.guru.didemo.examplebeans.FakeDataSource;
-import com.solar.guru.didemo.examplebeans.FakeDataSourceFromDefaultAppProp;
-import com.solar.guru.didemo.examplebeans.FakeDataSourceFromEnv;
-import com.solar.guru.didemo.examplebeans.SecondFakeDataSource;
+import com.solar.guru.didemo.examplebeans.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -49,5 +46,8 @@ public class DiDemoApplication {
         FakeDataSourceFromDefaultAppProp fakeDataSourceFromDefaultAppProp = context.getBean(FakeDataSourceFromDefaultAppProp.class);
         System.out.println("Data source from default Spring Boot application.properties: username: " + fakeDataSourceFromDefaultAppProp.getUsername() +
                 ", pass: " + fakeDataSourceFromDefaultAppProp.getPassword());
+
+        FakeDataSourceFromYAML fakeDataSourceFromYAML = context.getBean(FakeDataSourceFromYAML.class);
+        System.out.println("Data source form YAML file: username: " + fakeDataSourceFromYAML.getUsername());
     }
 }

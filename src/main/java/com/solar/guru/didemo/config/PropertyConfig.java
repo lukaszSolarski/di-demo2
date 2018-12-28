@@ -1,9 +1,6 @@
 package com.solar.guru.didemo.config;
 
-import com.solar.guru.didemo.examplebeans.FakeDataSource;
-import com.solar.guru.didemo.examplebeans.FakeDataSourceFromDefaultAppProp;
-import com.solar.guru.didemo.examplebeans.FakeDataSourceFromEnv;
-import com.solar.guru.didemo.examplebeans.SecondFakeDataSource;
+import com.solar.guru.didemo.examplebeans.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -42,6 +39,8 @@ public class PropertyConfig {
     @Value("${solar.third.username}")
     private String usernameFromDefaultAppProp;
 
+    @Value("${solar.forth.username}")
+    private String usernameFromYAML;
     /*
     The 'username' variable will be overrode, when you create in Environment the environment variable called "SOLAR_USERNAME"
      */
@@ -77,6 +76,13 @@ public class PropertyConfig {
         FakeDataSourceFromEnv fakeDataSourceFromEnv = new FakeDataSourceFromEnv();
         fakeDataSourceFromEnv.setUsername(env.getProperty("MYSPECIFIC_USERNAME"));
         return  fakeDataSourceFromEnv;
+    }
+
+    @Bean
+    public FakeDataSourceFromYAML getFakeDataSourceFromYAML() {
+        FakeDataSourceFromYAML fakeDataSourceFromYAML = new FakeDataSourceFromYAML();
+        fakeDataSourceFromYAML.setUsername(usernameFromYAML);
+        return fakeDataSourceFromYAML;
     }
     /*
     This method seems to be unnecessary in this application, because it uses Spring Boot and Spring Boot is
