@@ -25,7 +25,8 @@ public class PropertyConfig {
         return fakeDataSource;
     }
     /*
-    This method seems to be unnecessary. Later I believed that it was responsible for reading @Value's from external source
+    This method seems to be unnecessary in this application, because it uses Spring Boot and Spring Boot is
+    auto-configuring one. But in a non spring boot application you need to create such a bean.
     Here's a quote from @PropertySource JavaDoc:
     In order to resolve ${...} placeholders in <bean> definitions or @Value annotations using properties from
     a PropertySource, one must register a PropertySourcesPlaceholderConfigurer. This happens automatically when using
