@@ -5,6 +5,7 @@ import com.solar.guru.didemo.controllers.HelloController;
 import com.solar.guru.didemo.controllers.PropertyInjectedController;
 import com.solar.guru.didemo.controllers.SetterInjectedController;
 import com.solar.guru.didemo.examplebeans.FakeDataSource;
+import com.solar.guru.didemo.examplebeans.SecondFakeDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -31,7 +32,10 @@ public class DiDemoApplication {
         System.out.println(context.getBean(ConstructorInjectedController.class).sayHello());
         System.out.println("\nExternal properties - Property Source (from external file): ");
         FakeDataSource fakeDataSource = context.getBean(FakeDataSource.class);
-        System.out.println("Data source from file: username: " + fakeDataSource.getUsername() + ", pass: " + fakeDataSource.getPassword());
+        System.out.println("Data source from file: username: " + fakeDataSource.getUsername() +
+                ", pass: " + fakeDataSource.getPassword());
+        SecondFakeDataSource secondFakeDataSource = context.getBean(SecondFakeDataSource.class);
+        System.out.println("Data source from second file: username: " + secondFakeDataSource.getUsername() +
+                ", pass: " + secondFakeDataSource.getPassword());
     }
-
 }

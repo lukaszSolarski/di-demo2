@@ -1,14 +1,23 @@
 package com.solar.guru.didemo.config;
 
 import com.solar.guru.didemo.examplebeans.FakeDataSource;
+import com.solar.guru.didemo.examplebeans.SecondFakeDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
+/*
+There are 2 ways to specify more than one Source Property. One of them is commented, but both will work fine.
+ */
 @Configuration
-@PropertySource("classpath:fakedatasource.properties")
+//@PropertySource({"classpath:fakedatasource.properties", "classpath:secondfakedatasource.properties"})
+@PropertySources({
+        @PropertySource("classpath:fakedatasource.properties"),
+        @PropertySource("classpath:secondfakedatasource.properties")
+})
 public class PropertyConfig {
 
     @Value("${solar.username}")
@@ -17,12 +26,26 @@ public class PropertyConfig {
     @Value("${solar.password}")
     private String password;
 
+    @Value("${solar.second.username}")
+    private String secondUsername;
+
+    @Value("${solar.second.password}")
+    private String secondPassword;
+
     @Bean
     public FakeDataSource getFakeDataSource() {
         FakeDataSource fakeDataSource = new FakeDataSource();
         fakeDataSource.setUsername(username);
         fakeDataSource.setPassword(password);
         return fakeDataSource;
+    }
+
+    @Bean
+    public SecondFakeDataSource getSecondFakeDataSource() {
+        SecondFakeDataSource secondFakeDataSource = new SecondFakeDataSource();
+        secondFakeDataSource.setUsername(secondUsername);
+        secondFakeDataSource.setPassword(secondPassword);
+        return secondFakeDataSource;
     }
     /*
     This method seems to be unnecessary in this application, because it uses Spring Boot and Spring Boot is
