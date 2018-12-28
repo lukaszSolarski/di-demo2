@@ -24,7 +24,14 @@ public class PropertyConfig {
         fakeDataSource.setPassword(password);
         return fakeDataSource;
     }
-
+    /*
+    This method seems to be unnecessary. Later I believed that it was responsible for reading @Value's from external source
+    Here's a quote from @PropertySource JavaDoc:
+    In order to resolve ${...} placeholders in <bean> definitions or @Value annotations using properties from
+    a PropertySource, one must register a PropertySourcesPlaceholderConfigurer. This happens automatically when using
+    <context:property-placeholder> in XML, but must be explicitly registered using a static @Bean method when using
+    @Configuration classes.
+     */
     @Bean
     public static PropertySourcesPlaceholderConfigurer properties() {
         PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer = new PropertySourcesPlaceholderConfigurer();
