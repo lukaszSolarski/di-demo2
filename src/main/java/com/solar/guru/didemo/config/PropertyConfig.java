@@ -1,6 +1,7 @@
 package com.solar.guru.didemo.config;
 
 import com.solar.guru.didemo.examplebeans.FakeDataSource;
+import com.solar.guru.didemo.examplebeans.FakeDataSourceFromDefaultAppProp;
 import com.solar.guru.didemo.examplebeans.FakeDataSourceFromEnv;
 import com.solar.guru.didemo.examplebeans.SecondFakeDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,9 @@ public class PropertyConfig {
     @Value("${solar.second.password}")
     private String secondPassword;
 
+    @Value("${solar.third.username}")
+    private String usernameFromDefaultAppProp;
+
     /*
     The 'username' variable will be overrode, when you create in Environment the environment variable called "SOLAR_USERNAME"
      */
@@ -55,6 +59,13 @@ public class PropertyConfig {
         secondFakeDataSource.setUsername(secondUsername);
         secondFakeDataSource.setPassword(secondPassword);
         return secondFakeDataSource;
+    }
+
+    @Bean
+    public FakeDataSourceFromDefaultAppProp getFakeDataSourceFromDefaultAppProp() {
+        FakeDataSourceFromDefaultAppProp fakeDataSourceFromDefaultAppProp = new FakeDataSourceFromDefaultAppProp();
+        fakeDataSourceFromDefaultAppProp.setUsername(usernameFromDefaultAppProp);
+        return fakeDataSourceFromDefaultAppProp;
     }
     /*
     When you create in Environment the environment variable called "MYSPECIFIC_USERNAME", the 'username' will become
