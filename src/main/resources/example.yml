@@ -19,6 +19,9 @@ string_val: "That's the string value"
 
 colon_string: "The text with colon: text1, text2 etc"
 
+#The above signs '---' are file limiter. This means that everything after them is considered to be the completely new .yml file
+---
+
 #String that includes new lines
 include_new_lines: |
   lalala la

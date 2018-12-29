@@ -2,3 +2,11 @@ solar:
   forth:
     username: ForthUsername
     password: ForthPass
+
+#The above signs '---' are file limiter. This means that everything after them is considered to be the completely new .yml file
+---
+spring:
+  profile: pl
+solar:
+  forth:
+    username: ForthUsernameFromSpecificProfile(pl)
